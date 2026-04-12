@@ -11,7 +11,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - `README.md` with full usage guide, template table, category list, and generated file example.
 - `CLAUDE.md` with project overview, architecture notes, template system docs, and git conventions.
 - `CHANGELOG.md` to track notable changes per Semantic Versioning.
-- `.gitignore` excluding `vendor/`, `composer.lock`, and `create-project.sh`.
+- `.gitignore` excluding `vendor/`, `composer.lock`, and `create-pr.sh`.
 
 ## [1.0.0] - 2026-04-12
 
