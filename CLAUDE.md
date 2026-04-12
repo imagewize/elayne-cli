@@ -43,6 +43,15 @@ Templates live in `templates/` as `.php` files. They contain WordPress block mar
 
 Reusable block snippets (standalone markup fragments) are in `snippets/` as `.txt` files and are listed by `pattern:list` but not used in file generation.
 
+## Versioning
+
+When bumping the package version, update it in **two places**:
+
+1. **`src/Application.php`** — the version string passed to `parent::__construct()`.
+2. **`CHANGELOG.md`** — add a new `## [x.y.z] - YYYY-MM-DD` section at the top of the changelog following Keep a Changelog conventions.
+
+Do not update `composer.json` — the version there is managed by the Composer repository / Packagist tag.
+
 ## Git Conventions
 
 - Use **atomic commits**: one logical change per commit.
