@@ -26,12 +26,18 @@ class PatternListCommand extends Command
         $io->table(
             ['Name', 'Description'],
             [
-                ['blank',                 'Empty pattern with header only'],
-                ['hero-cover',            'Full-bleed wp:cover with bottom-center content'],
-                ['cta-fullwidth',         'Full-width call-to-action band'],
-                ['feature-grid-3col',     'Full-width section with 3 feature cards'],
-                ['stats-bar-fullwidth',   'Dark full-width stats/numbers bar'],
-                ['two-column-text-image', 'Text left, image right two-column layout'],
+                ['blank',                  'Empty pattern with header only'],
+                ['hero-cover',             'Full-bleed wp:cover with bottom-center content'],
+                ['cta-fullwidth',          'Full-width call-to-action band'],
+                ['feature-grid-3col',      'Full-width section with 3 feature cards'],
+                ['stats-bar-fullwidth',    'Dark full-width stats/numbers bar'],
+                ['two-column-text-image',  'Text left, image right two-column layout'],
+                ['header-standard',        'Standard header — logo, navigation, social links'],
+                ['footer-standard',        'Standard footer — brand blurb, nav columns, subnav'],
+                ['testimonials-grid',      'Responsive testimonial card grid with reviewer info'],
+                ['pricing-comparison',     'Three-tier pricing table with elevated recommended card'],
+                ['blog-post-columns',      'wp:query-driven 3-column post grid (portrait images)'],
+                ['team-grid',              'Team member profile grid — photo, name, title, bio'],
             ]
         );
 
@@ -47,8 +53,23 @@ class PatternListCommand extends Command
             ]
         );
 
+        $io->section('Style Variations  (use with: vendor/bin/elayne style:create)');
+        $io->writeln('  Scaffold a <info>styles/*.json</info> theme variation with a pre-wired color palette.');
+        $io->table(
+            ['Vertical', 'Description'],
+            [
+                ['custom',        'Enter your own hex color values'],
+                ['legal',         'Navy blue + gold'],
+                ['plumbing',      'Dark blue + orange'],
+                ['spa',           'Sage green + sand'],
+                ['food-beverage', 'Burgundy + gold'],
+            ]
+        );
+
         $io->section('Pattern Categories');
         $categories = [
+            'header',
+            'footer',
             'elayne/hero',
             'elayne/features',
             'elayne/call-to-action',
@@ -57,6 +78,8 @@ class PatternListCommand extends Command
             'elayne/statistics',
             'elayne/contact',
             'elayne/posts',
+            'elayne/pricing',
+            'elayne/banner',
             'elayne/card-simple   (minimumColumnWidth: 18rem)',
             'elayne/card-extended (minimumColumnWidth: 19rem)',
             'elayne/card-profiles (minimumColumnWidth: 20rem)',

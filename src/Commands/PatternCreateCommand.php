@@ -14,6 +14,8 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 class PatternCreateCommand extends Command
 {
     private const CATEGORIES = [
+        'header',
+        'footer',
         'elayne/hero',
         'elayne/features',
         'elayne/call-to-action',
@@ -22,18 +24,26 @@ class PatternCreateCommand extends Command
         'elayne/statistics',
         'elayne/contact',
         'elayne/posts',
+        'elayne/pricing',
+        'elayne/banner',
         'elayne/card-simple',
         'elayne/card-extended',
         'elayne/card-profiles',
     ];
 
     private const TEMPLATES = [
-        'blank'                 => 'Empty pattern with header only',
-        'hero-cover'            => 'Full-bleed wp:cover with bottom-center content',
-        'cta-fullwidth'         => 'Full-width call-to-action band',
-        'feature-grid-3col'     => 'Full-width section with 3 feature cards',
-        'stats-bar-fullwidth'   => 'Dark full-width stats/numbers bar',
-        'two-column-text-image' => 'Text left, image right two-column layout',
+        'blank'                  => 'Empty pattern with header only',
+        'hero-cover'             => 'Full-bleed wp:cover with bottom-center content',
+        'cta-fullwidth'          => 'Full-width call-to-action band',
+        'feature-grid-3col'      => 'Full-width section with 3 feature cards',
+        'stats-bar-fullwidth'    => 'Dark full-width stats/numbers bar',
+        'two-column-text-image'  => 'Text left, image right two-column layout',
+        'header-standard'        => 'Standard header — logo, navigation, social links',
+        'footer-standard'        => 'Standard footer — brand blurb, nav columns, subnav',
+        'testimonials-grid'      => 'Responsive testimonial card grid with reviewer info',
+        'pricing-comparison'     => 'Three-tier pricing table with elevated recommended card',
+        'blog-post-columns'      => 'wp:query-driven 3-column post grid (portrait images)',
+        'team-grid'              => 'Team member profile grid — photo, name, title, bio',
     ];
 
     protected function configure(): void
