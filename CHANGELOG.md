@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.0] - 2026-04-12
+
+### Added
+
+- `style:create` command — interactively scaffolds a WordPress theme style variation JSON file (`styles/*.json`) with a pre-wired color palette, gradients, and duotone entries. Supports five preset verticals (`legal`, `plumbing`, `spa`, `food-beverage`, `custom`) with per-field hex color prompts and defaults. Writes to `./styles/` by default; overridable with `--output-dir`.
+- Six new pattern templates: `header-standard`, `footer-standard`, `testimonials-grid`, `pricing-comparison`, `blog-post-columns`, `team-grid`.
+- Four new pattern categories: `header`, `footer`, `elayne/pricing`, `elayne/banner`.
+- Style Variations section added to `pattern:list` output showing available vertical presets.
+- Documented shorter Composer script aliases (`composer pattern:list`, `composer pattern:create`, `composer style:create`) and PATH-based `elayne` shorthand in README.
+
 ## [1.0.1] - 2026-04-12
 
 ### Added
