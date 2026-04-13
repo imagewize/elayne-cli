@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.0] - 2026-04-13
+
+### Added
+
+- New `overlay-grid-cover-card` snippet — portrait cover image card with a floating bottom-left badge, implemented via `wp:cover` (not `wp:image`) for automatic landscape-to-portrait cropping. Includes inline usage notes for required theme CSS and editor display-fix rules.
+- `overlay-grid-cover-card.txt` registered in `pattern:list` snippet table with a descriptive label.
+
 ## [1.1.0] - 2026-04-12
 
 ### Added
