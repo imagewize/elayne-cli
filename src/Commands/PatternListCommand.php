@@ -45,11 +45,12 @@ class PatternListCommand extends Command
         $io->table(
             ['File', 'Description'],
             [
-                ['eyebrow-heading-body.txt',  'Eyebrow label + heading + body paragraph'],
-                ['3col-grid-wrapper.txt',     'Responsive 3-column grid wrapper'],
-                ['stat-item.txt',             'Number + label stat card (dark background)'],
-                ['testimonial-card.txt',      'Testimonial with stars, quote, author'],
-                ['two-button-group.txt',      'Primary + outline button pair'],
+                ['eyebrow-heading-body.txt',          'Eyebrow label + heading + body paragraph'],
+                ['3col-grid-wrapper.txt',             'Responsive 3-column grid wrapper'],
+                ['stat-item.txt',                     'Number + label stat card (dark background)'],
+                ['testimonial-card.txt',              'Testimonial with stars, quote, author'],
+                ['two-button-group.txt',              'Primary + outline button pair'],
+                ['overlay-grid-cover-card.txt',       'Portrait cover image card + floating badge (use wp:cover, NOT wp:image)'],
             ]
         );
 
