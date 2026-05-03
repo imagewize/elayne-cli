@@ -4,6 +4,20 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.2] - 2026-05-03
+
+### Fixed
+
+- `testimonials-grid`: added `wp:image` avatar block (avatar-1 through avatar-4) to each reviewer card, matching the structure added to the theme.
+
+### Changed
+
+- `blog-post-columns`: cleared `Block Types` header field, added empty `Block Types` and `Post Types` lines; added `patternName` to root block metadata.
+- `team-grid`: replaced `Block Types`/`Inserter` header fields with a `Grid Config` comment; added `patternName` to root block metadata.
+- `pricing-comparison`: replaced `Block Types`/`Inserter` header fields with a `Grid Config` comment; added `patternName` to root block metadata.
+- Renamed ten woo-* templates to match shorter filenames used in the theme: `woo-cart-page` → `woo-cart`, `woo-checkout-page` → `woo-checkout`, `woo-hero-split` → `woo-hero`, `woo-ticker-band` → `woo-ticker`, `woo-categories-bento` → `woo-shop-categories`, `woo-product-grid` → `woo-featured-products`, `woo-text-image-watermark` → `woo-our-story`, `woo-testimonials-grid` → `woo-testimonials`, `woo-newsletter-band` → `woo-newsletter`, `woo-landing-shell` → `woo-shop-landing`.
+- Updated `TEMPLATES` constant keys in `PatternCreateCommand` to reflect the renamed woo templates.
+
 ## [1.3.1] - 2026-05-03
 
 ### Fixed
