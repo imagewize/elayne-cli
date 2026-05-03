@@ -108,12 +108,12 @@
 
 <!-- wp:group {"metadata":{"name":"Footer Subnav"},"align":"wide","style":{"spacing":{"padding":{"top":"40px"}},"elements":{"link":{"color":{"text":"var:preset|color|secondary"}}}},"textColor":"secondary"} -->
 <div class="wp-block-group alignwide has-secondary-color has-text-color has-link-color" style="padding-top:40px"><!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|small"}},"layout":{"type":"flex","flexWrap":"wrap","justifyContent":"space-between"}} -->
-<div class="wp-block-group"><!-- wp:paragraph {"fontSize":"small"} -->
+<div class="wp-block-group" style="gap:var(--wp--preset--spacing--small)"><!-- wp:paragraph {"fontSize":"small"} -->
 <p class="has-small-font-size"><?php echo wp_kses_post( sprintf( /* translators: %1$s: year, %2$s: theme link */ __( '© %1$s Powered by WordPress and %2$s', 'elayne' ), esc_html( date( 'Y' ) ), '<a href="https://wordpress.org/themes/elayne/">Elayne</a>' ) ); ?></p>
 <!-- /wp:paragraph -->
 
 <!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|small"}},"fontSize":"small","layout":{"type":"flex","flexWrap":"nowrap"}} -->
-<div class="wp-block-group has-small-font-size"><!-- wp:paragraph -->
+<div class="wp-block-group has-small-font-size" style="gap:var(--wp--preset--spacing--small)"><!-- wp:paragraph -->
 <p><?php esc_html_e( 'Privacy Policy', 'elayne' ); ?></p>
 <!-- /wp:paragraph -->
 

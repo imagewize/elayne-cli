@@ -54,8 +54,8 @@ Do not update `composer.json` — the version there is managed by the Composer r
 
 ## Git Conventions
 
-- Use **atomic commits**: one logical change per commit.
-- Commit messages must not mention AI tools or code assistants.
+- Use **atomic commits**: one logical change per commit. Always commit atomically — never batch unrelated changes.
+- Commit messages must not mention AI tools or code assistants. Do not add `Co-Authored-By` trailers.
 - Follow Conventional Commits format: `type: short description` (e.g. `feat:`, `fix:`, `docs:`, `chore:`).
 
 ## Key Conventions
