@@ -4,6 +4,15 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.0] - 2026-05-03
+
+### Added
+
+- Ten WooCommerce store pattern templates promoted from the validated `feature/elayne-store` branch: `woo-hero-split`, `woo-ticker-band`, `woo-categories-bento`, `woo-product-grid`, `woo-text-image-watermark`, `woo-testimonials-grid`, `woo-newsletter-band`, `woo-landing-shell`, `woo-cart-page`, `woo-checkout-page`.
+- New `elayne/woocommerce` pattern category registered in `PatternCreateCommand`.
+- All woo-* templates include `TEMPLATE` and `RULES CHECKED` header comments and have TODO markers for all brand-specific content (headlines, copy, category names, stats, reviewer info).
+- `woo-ticker-band` notes the required `render_block` filter dependency; `woo-categories-bento` notes the `is-style-elayne-woo-categories-grid` block style registration; `woo-landing-shell` notes that sub-pattern slugs must be updated to match the target vertical.
+
 ## [1.2.0] - 2026-04-13
 
 ### Added
