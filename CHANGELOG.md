@@ -4,6 +4,21 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.1] - 2026-05-03
+
+### Fixed
+
+- Nine non-WooCommerce templates updated to pass pattern compliance checks: `blog-post-columns`, `cta-fullwidth`, `feature-grid-3col`, `footer-standard`, `hero-cover`, `pricing-comparison`, `stats-bar-fullwidth`, `testimonials-grid`, `two-column-text-image`.
+- Added missing inline `gap:` style on flex group divs (`blog-post-columns`, `footer-standard`, `testimonials-grid`).
+- Removed organizational HTML comments from inside block div elements — they cause WordPress block validation errors (`cta-fullwidth`, `hero-cover`, `two-column-text-image`).
+- Replaced `wp:columns` 3-column layouts with responsive `wp:group` grid (`minimumColumnWidth`) in `feature-grid-3col` and `stats-bar-fullwidth`.
+- Migrated `wp:button` root-level `fontSize` to `style.typography.fontSize` and removed `opacity` inline style in `pricing-comparison`.
+- Converted commented-out image placeholder to a proper `wp:image` block in `two-column-text-image`.
+
+### Changed
+
+- `CLAUDE.md` git conventions: clarified atomic-commit requirement and prohibited `Co-Authored-By` trailers in commit messages.
+
 ## [1.3.0] - 2026-05-03
 
 ### Added
