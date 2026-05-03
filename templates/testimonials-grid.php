@@ -33,7 +33,11 @@
 <!-- /wp:paragraph -->
 
 <!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|small"}},"layout":{"type":"flex","flexWrap":"nowrap"}} -->
-<div class="wp-block-group" style="gap:var(--wp--preset--spacing--small)"><!-- wp:group {"style":{"spacing":{"blockGap":"0px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
+<div class="wp-block-group" style="gap:var(--wp--preset--spacing--small)"><!-- wp:image {"width":"60px","height":"60px","sizeSlug":"full","linkDestination":"none","className":"is-style-rounded-full"} -->
+<figure class="wp-block-image size-full is-resized is-style-rounded-full"><img src="<?php echo esc_url( get_theme_file_uri( 'patterns/images/avatar-1.webp' ) ); ?>" alt="<?php echo esc_attr__( 'Reviewer avatar', 'elayne' ); ?>" style="width:60px;height:60px"/></figure>
+<!-- /wp:image -->
+
+<!-- wp:group {"style":{"spacing":{"blockGap":"0px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
 <div class="wp-block-group" style="gap:0px"><!-- wp:paragraph -->
 <p><strong><?php esc_html_e( 'TODO: Reviewer Name', 'elayne' ); ?></strong></p>
 <!-- /wp:paragraph -->
@@ -51,7 +55,11 @@
 <!-- /wp:paragraph -->
 
 <!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|small"}},"layout":{"type":"flex","flexWrap":"nowrap"}} -->
-<div class="wp-block-group" style="gap:var(--wp--preset--spacing--small)"><!-- wp:group {"style":{"spacing":{"blockGap":"0px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
+<div class="wp-block-group" style="gap:var(--wp--preset--spacing--small)"><!-- wp:image {"width":"60px","height":"60px","sizeSlug":"full","linkDestination":"none","className":"is-style-rounded-full"} -->
+<figure class="wp-block-image size-full is-resized is-style-rounded-full"><img src="<?php echo esc_url( get_theme_file_uri( 'patterns/images/avatar-2.webp' ) ); ?>" alt="<?php echo esc_attr__( 'Reviewer avatar', 'elayne' ); ?>" style="width:60px;height:60px"/></figure>
+<!-- /wp:image -->
+
+<!-- wp:group {"style":{"spacing":{"blockGap":"0px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
 <div class="wp-block-group" style="gap:0px"><!-- wp:paragraph -->
 <p><strong><?php esc_html_e( 'TODO: Reviewer Name', 'elayne' ); ?></strong></p>
 <!-- /wp:paragraph -->
@@ -69,7 +77,11 @@
 <!-- /wp:paragraph -->
 
 <!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|small"}},"layout":{"type":"flex","flexWrap":"nowrap"}} -->
-<div class="wp-block-group" style="gap:var(--wp--preset--spacing--small)"><!-- wp:group {"style":{"spacing":{"blockGap":"0px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
+<div class="wp-block-group" style="gap:var(--wp--preset--spacing--small)"><!-- wp:image {"width":"60px","height":"60px","sizeSlug":"full","linkDestination":"none","className":"is-style-rounded-full"} -->
+<figure class="wp-block-image size-full is-resized is-style-rounded-full"><img src="<?php echo esc_url( get_theme_file_uri( 'patterns/images/avatar-3.webp' ) ); ?>" alt="<?php echo esc_attr__( 'Reviewer avatar', 'elayne' ); ?>" style="width:60px;height:60px"/></figure>
+<!-- /wp:image -->
+
+<!-- wp:group {"style":{"spacing":{"blockGap":"0px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
 <div class="wp-block-group" style="gap:0px"><!-- wp:paragraph -->
 <p><strong><?php esc_html_e( 'TODO: Reviewer Name', 'elayne' ); ?></strong></p>
 <!-- /wp:paragraph -->
@@ -87,7 +99,11 @@
 <!-- /wp:paragraph -->
 
 <!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|small"}},"layout":{"type":"flex","flexWrap":"nowrap"}} -->
-<div class="wp-block-group" style="gap:var(--wp--preset--spacing--small)"><!-- wp:group {"style":{"spacing":{"blockGap":"0px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
+<div class="wp-block-group" style="gap:var(--wp--preset--spacing--small)"><!-- wp:image {"width":"60px","height":"60px","sizeSlug":"full","linkDestination":"none","className":"is-style-rounded-full"} -->
+<figure class="wp-block-image size-full is-resized is-style-rounded-full"><img src="<?php echo esc_url( get_theme_file_uri( 'patterns/images/avatar-4.webp' ) ); ?>" alt="<?php echo esc_attr__( 'Reviewer avatar', 'elayne' ); ?>" style="width:60px;height:60px"/></figure>
+<!-- /wp:image -->
+
+<!-- wp:group {"style":{"spacing":{"blockGap":"0px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
 <div class="wp-block-group" style="gap:0px"><!-- wp:paragraph -->
 <p><strong><?php esc_html_e( 'TODO: Reviewer Name', 'elayne' ); ?></strong></p>
 <!-- /wp:paragraph -->
