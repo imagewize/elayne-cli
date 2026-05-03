@@ -33,8 +33,8 @@
 <!-- /wp:paragraph -->
 
 <!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|small"}},"layout":{"type":"flex","flexWrap":"nowrap"}} -->
-<div class="wp-block-group"><!-- wp:group {"style":{"spacing":{"blockGap":"0px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
-<div class="wp-block-group"><!-- wp:paragraph -->
+<div class="wp-block-group" style="gap:var(--wp--preset--spacing--small)"><!-- wp:group {"style":{"spacing":{"blockGap":"0px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
+<div class="wp-block-group" style="gap:0px"><!-- wp:paragraph -->
 <p><strong><?php esc_html_e( 'TODO: Reviewer Name', 'elayne' ); ?></strong></p>
 <!-- /wp:paragraph -->
 
@@ -51,8 +51,8 @@
 <!-- /wp:paragraph -->
 
 <!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|small"}},"layout":{"type":"flex","flexWrap":"nowrap"}} -->
-<div class="wp-block-group"><!-- wp:group {"style":{"spacing":{"blockGap":"0px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
-<div class="wp-block-group"><!-- wp:paragraph -->
+<div class="wp-block-group" style="gap:var(--wp--preset--spacing--small)"><!-- wp:group {"style":{"spacing":{"blockGap":"0px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
+<div class="wp-block-group" style="gap:0px"><!-- wp:paragraph -->
 <p><strong><?php esc_html_e( 'TODO: Reviewer Name', 'elayne' ); ?></strong></p>
 <!-- /wp:paragraph -->
 
@@ -69,8 +69,8 @@
 <!-- /wp:paragraph -->
 
 <!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|small"}},"layout":{"type":"flex","flexWrap":"nowrap"}} -->
-<div class="wp-block-group"><!-- wp:group {"style":{"spacing":{"blockGap":"0px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
-<div class="wp-block-group"><!-- wp:paragraph -->
+<div class="wp-block-group" style="gap:var(--wp--preset--spacing--small)"><!-- wp:group {"style":{"spacing":{"blockGap":"0px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
+<div class="wp-block-group" style="gap:0px"><!-- wp:paragraph -->
 <p><strong><?php esc_html_e( 'TODO: Reviewer Name', 'elayne' ); ?></strong></p>
 <!-- /wp:paragraph -->
 
@@ -87,8 +87,8 @@
 <!-- /wp:paragraph -->
 
 <!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|small"}},"layout":{"type":"flex","flexWrap":"nowrap"}} -->
-<div class="wp-block-group"><!-- wp:group {"style":{"spacing":{"blockGap":"0px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
-<div class="wp-block-group"><!-- wp:paragraph -->
+<div class="wp-block-group" style="gap:var(--wp--preset--spacing--small)"><!-- wp:group {"style":{"spacing":{"blockGap":"0px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
+<div class="wp-block-group" style="gap:0px"><!-- wp:paragraph -->
 <p><strong><?php esc_html_e( 'TODO: Reviewer Name', 'elayne' ); ?></strong></p>
 <!-- /wp:paragraph -->
 
