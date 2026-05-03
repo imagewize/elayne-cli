@@ -119,6 +119,16 @@ After generation, copy the `.json` file to your theme's `styles/` directory and 
 | `pricing-comparison` | Three-tier pricing table with elevated recommended card |
 | `blog-post-columns` | `wp:query`-driven 3-column post grid (portrait images) |
 | `team-grid` | Team member profile grid — photo, name, title, bio |
+| `woo-hero-split` | WooCommerce — two-column hero: text + CTA left, decorative cover right |
+| `woo-ticker-band` | WooCommerce — server-rendered marquee ticker bar (needs `render_block` filter) |
+| `woo-categories-bento` | WooCommerce — CSS bento grid: one large featured card + four smaller cards |
+| `woo-product-grid` | WooCommerce — section header with View All + product-collection 4-col grid |
+| `woo-text-image-watermark` | WooCommerce — two-column brand story: monogram watermark left, text + stats right |
+| `woo-testimonials-grid` | WooCommerce — three-column testimonial cards with star ratings and avatar circles |
+| `woo-newsletter-band` | WooCommerce — full-bleed newsletter signup with decorative eyebrow |
+| `woo-landing-shell` | WooCommerce — store homepage shell that composes sub-patterns in sequence |
+| `woo-cart-page` | WooCommerce — full-width cart page wrapper (`Inserter: false`) |
+| `woo-checkout-page` | WooCommerce — full-width checkout page wrapper (`Inserter: false`) |
 
 ## Style variation presets
 
@@ -140,7 +150,7 @@ elayne/hero            elayne/features        elayne/call-to-action
 elayne/testimonial     elayne/team            elayne/statistics
 elayne/contact         elayne/posts           elayne/pricing
 elayne/banner          elayne/card-simple     elayne/card-extended
-elayne/card-profiles
+elayne/card-profiles   elayne/woocommerce
 ```
 
 ## Generated pattern file
