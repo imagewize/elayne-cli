@@ -6,11 +6,10 @@
  * Categories: elayne/TODO-category
  * Keywords: TODO keyword1, keyword2
  * Viewport Width: 1200
- * Block Types: core/group
- * Inserter: true
+ * Grid Config: 20rem (profile cards: photo + name + title + bio)
  */
 ?>
-<!-- wp:group {"metadata":{"name":"Team Member Grid"},"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|xxx-large","bottom":"var:preset|spacing|xxx-large","left":"var:preset|spacing|medium","right":"var:preset|spacing|medium"},"margin":{"top":"0","bottom":"0"},"blockGap":"var:preset|spacing|x-large"}},"backgroundColor":"tertiary","layout":{"type":"constrained"}} -->
+<!-- wp:group {"metadata":{"patternName":"elayne/TODO-slug","name":"Team Member Grid"},"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|xxx-large","bottom":"var:preset|spacing|xxx-large","left":"var:preset|spacing|medium","right":"var:preset|spacing|medium"},"margin":{"top":"0","bottom":"0"},"blockGap":"var:preset|spacing|x-large"}},"backgroundColor":"tertiary","layout":{"type":"constrained"}} -->
 <div class="wp-block-group alignfull has-tertiary-background-color has-background" style="margin-top:0;margin-bottom:0;padding-top:var(--wp--preset--spacing--xxx-large);padding-right:var(--wp--preset--spacing--medium);padding-bottom:var(--wp--preset--spacing--xxx-large);padding-left:var(--wp--preset--spacing--medium)"><!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|small"}},"layout":{"type":"constrained"}} -->
 <div class="wp-block-group"><!-- wp:heading {"textAlign":"center","fontSize":"x-large"} -->
 <h2 class="wp-block-heading has-text-align-center has-x-large-font-size"><?php esc_html_e( 'TODO: Section heading', 'elayne' ); ?></h2>
