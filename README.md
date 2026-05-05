@@ -80,7 +80,9 @@ vendor/bin/elayne pattern:create \
   --template=hero-cover \
   --category=elayne/hero \
   --keywords="hero, banner" \
-  --output-dir=./patterns
+  --output-dir=./patterns \
+  --with-style \
+  --style-dir=./assets/styles/block-styles
 ```
 
 The `--slug` option accepts the full `elayne/<slug>` form or just the bare slug — the `elayne/` prefix is stripped automatically. A positional `slug` argument is also accepted for backwards compatibility.
