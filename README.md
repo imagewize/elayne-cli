@@ -29,11 +29,12 @@ Add these scripts to your theme's `composer.json` to avoid typing `vendor/bin/el
 "scripts": {
     "pattern:list":   "@php ./vendor/bin/elayne pattern:list",
     "pattern:create": "@php ./vendor/bin/elayne pattern:create",
+    "layout:create":  "@php ./vendor/bin/elayne layout:create",
     "style:create":   "@php ./vendor/bin/elayne style:create"
 }
 ```
 
-Then run `composer pattern:list`, `composer pattern:create`, or `composer style:create`.
+Then run `composer pattern:list`, `composer pattern:create`, `composer layout:create`, or `composer style:create`.
 
 To use the bare `elayne` command from any project directory, add `./vendor/bin` to your shell PATH:
 
@@ -42,7 +43,7 @@ To use the bare `elayne` command from any project directory, add `./vendor/bin` 
 export PATH="./vendor/bin:$PATH"
 ```
 
-After reloading your shell (`source ~/.zshrc`) you can run `elayne pattern:list`, `elayne pattern:create`, and `elayne style:create` directly.
+After reloading your shell (`source ~/.zshrc`) you can run `elayne pattern:list`, `elayne pattern:create`, `elayne layout:create`, and `elayne style:create` directly.
 
 ## Usage
 
@@ -99,6 +100,36 @@ vendor/bin/elayne pattern:create \
 
 The `--slug` option accepts the full `elayne/<slug>` form or just the bare slug — the `elayne/` prefix is stripped automatically. A positional `slug` argument is also accepted for backwards compatibility.
 
+### Scaffold a layout pattern (interactive)
+
+```bash
+vendor/bin/elayne layout:create
+```
+
+You will be prompted for:
+
+| Prompt | Notes |
+|---|---|
+| Pattern title | Human-readable label |
+| Pattern slug | Auto-derived from title; prefixed with `elayne/` |
+| Layout | Choose one of the 8 structural layout skeletons (see below) |
+| Category | Choose from the built-in `elayne/*` categories |
+| Keywords | Comma-separated, used for WP pattern search |
+| Output directory | Defaults to `./patterns/` if it exists, otherwise `./` |
+| Shell only | Use `--shell-only` to generate PHP header + paste marker only (no block markup) for editor-first workflow |
+
+Non-interactive:
+
+```bash
+vendor/bin/elayne layout:create \
+  --title="Home Hero" \
+  --slug="elayne/home-hero" \
+  --layout=hero-image-right \
+  --category=elayne/hero \
+  --keywords="hero, home" \
+  --output-dir=./patterns
+```
+
 ### Scaffold a style variation (interactive)
 
 ```bash
@@ -150,6 +181,19 @@ After generation, copy the `.json` file to your theme's `styles/` directory and 
 | `woo-checkout` | WooCommerce — full-width checkout page wrapper (`Inserter: false`) |
 | `woo-filters-sidebar` | WooCommerce — sticky sidebar: price slider + colour-chip attribute + two checkbox-list attributes |
 | `woo-product-grid` | WooCommerce — filter-aware product-collection grid with sort toolbar + pagination |
+
+## Layouts
+
+| Layout | Description |
+|---|---|
+| `full-width` | Single column, constrained — simplest starting point |
+| `two-column` | 50/50 `wp:columns` block |
+| `three-column` | CSS grid with 3 equal `wp:group` columns |
+| `sidebar-left` | Narrow left sidebar (33%) + wide content area (66%) |
+| `sidebar-right` | Wide content area (66%) + narrow right sidebar (33%) |
+| `hero-image-left` | Cover image left + heading, text, CTA right |
+| `hero-image-right` | Heading, text, CTA left + cover image right |
+| `landing-page` | Hero section + 3-column features row + CTA — no header/footer wrapper |
 
 ## CSS Stubs
 
