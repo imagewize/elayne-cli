@@ -56,6 +56,8 @@ class PatternCreateCommand extends Command
         'woo-shop-landing'            => 'WooCommerce — store homepage shell that composes sub-patterns in sequence',
         'woo-cart'                    => 'WooCommerce — full-width cart page wrapper (Inserter: false)',
         'woo-checkout'                => 'WooCommerce — full-width checkout page wrapper (Inserter: false)',
+        'woo-filters-sidebar'         => 'WooCommerce — sticky sidebar: price slider + colour-chip attribute + two checkbox-list attributes',
+        'woo-product-grid'            => 'WooCommerce — filter-aware product-collection grid with sort toolbar + pagination',
     ];
 
     protected function configure(): void
@@ -69,7 +71,9 @@ class PatternCreateCommand extends Command
             ->addOption('template', 't', InputOption::VALUE_REQUIRED, 'Starter template (' . implode(', ', array_keys(self::TEMPLATES)) . ')')
             ->addOption('category', 'c', InputOption::VALUE_REQUIRED, 'Pattern category')
             ->addOption('keywords', 'k', InputOption::VALUE_REQUIRED, 'Comma-separated keywords')
-            ->addOption('output-dir', 'o', InputOption::VALUE_REQUIRED, 'Output directory (default: ./patterns/ or ./)');
+            ->addOption('output-dir', 'o', InputOption::VALUE_REQUIRED, 'Output directory (default: ./patterns/ or ./)')
+            ->addOption('with-style', null, InputOption::VALUE_NONE, 'Also create a CSS file in the style directory')
+            ->addOption('style-dir', null, InputOption::VALUE_REQUIRED, 'CSS output directory (default: assets/styles/block-styles/)');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
@@ -160,6 +164,29 @@ class PatternCreateCommand extends Command
 
         file_put_contents($filename, $content);
 
+        // Create CSS file if --with-style flag is set
+        $withStyle = $input->getOption('with-style');
+        if ($withStyle) {
+            $styleDir = $input->getOption('style-dir');
+            if (!$styleDir) {
+                $cwd = (string) getcwd();
+                $styleDir = is_dir($cwd . '/assets/styles/block-styles') 
+                    ? $cwd . '/assets/styles/block-styles' 
+                    : $cwd . '/assets/styles/block-styles';
+            }
+
+            $cssContent = $this->buildStyleCss($slug, $title, $template);
+            if ($cssContent === '') {
+                $io->warning("No CSS stub found for template '{$template}' — skipping style file. Add css/{$template}.css to provide one.");
+            } elseif (!is_dir($styleDir) && !mkdir($styleDir, 0755, true) && !is_dir($styleDir)) {
+                $io->warning("Could not create style directory: {$styleDir}");
+            } else {
+                $cssFilename = rtrim($styleDir, '/') . '/elayne-' . $slug . '.css';
+                file_put_contents($cssFilename, $cssContent);
+                $io->writeln(" <info>Style file created: {$cssFilename}</info>");
+            }
+        }
+
         $io->success("Pattern created: {$filename}");
         $io->note([
             'Slug: elayne/' . $slug,
@@ -218,5 +245,24 @@ PHP;
         $slug = (string) preg_replace('/[^a-z0-9\s-]/', '', $slug);
         $slug = (string) preg_replace('/[\s-]+/', '-', $slug);
         return trim($slug, '-');
+    }
+
+    private function buildStyleCss(string $slug, string $title, string $template): string
+    {
+        $cssDir = __DIR__ . '/../../css/';
+        $templateFile = $cssDir . $template . '.css';
+        $genericFile  = $cssDir . 'generic.css';
+
+        $stubPath = file_exists($templateFile) ? $templateFile : (file_exists($genericFile) ? $genericFile : null);
+
+        if ($stubPath === null) {
+            return '';
+        }
+
+        $css = (string) file_get_contents($stubPath);
+        $css = str_replace('TODO-slug', $slug, $css);
+        $css = str_replace('TODO-title', $title, $css);
+
+        return $css;
     }
 }
