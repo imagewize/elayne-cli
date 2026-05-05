@@ -4,6 +4,17 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.6.0] - 2026-05-05
+
+### Added
+
+- `css/hero-cover.css`: stub for cover-block hero patterns — hooks for overlay tweaks and mobile full-width button stacking.
+- `css/cta-fullwidth.css`: stub for full-width CTA sections — centres button row, stacks buttons full-width on mobile.
+- `css/feature-grid-3col.css`: stub for 3-column feature grids — fixes `is-layout-flow` margin on grid cards and adds hover shadow transition.
+- `css/testimonials-grid.css`: stub for testimonial card grids — fixes `is-layout-flow` margin and adds an opening quote mark via `::before`.
+- `css/team-grid.css`: stub for team member grids — fixes `is-layout-flow` margin and enforces a 4:5 portrait aspect ratio on team photos.
+- `css/stats-bar-fullwidth.css`: stub for full-width stats bars — fixes `is-layout-flow` margin, adds vertical dividers between stat items on desktop with a top-border fallback on mobile.
+
 ## [1.5.2] - 2026-05-05
 
 ### Changed

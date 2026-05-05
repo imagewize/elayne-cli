@@ -145,7 +145,13 @@ When `--with-style` is passed, `pattern:create` writes a CSS file to the style o
 
 | Stub | Used for |
 |---|---|
-| `css/woo-filters-sidebar.css` | `woo-filters-sidebar` template — full WooCommerce filter block CSS (sticky sidebar, price slider, checkbox lists, colour swatches) |
+| `css/hero-cover.css` | `hero-cover` — overlay tweaks and mobile full-width button stacking |
+| `css/cta-fullwidth.css` | `cta-fullwidth` — centres button row, stacks buttons full-width on mobile |
+| `css/feature-grid-3col.css` | `feature-grid-3col` — fixes `is-layout-flow` margin on grid cards, hover shadow transition |
+| `css/testimonials-grid.css` | `testimonials-grid` — fixes `is-layout-flow` margin, opening quote mark via `::before` |
+| `css/team-grid.css` | `team-grid` — fixes `is-layout-flow` margin, enforces 4:5 portrait aspect ratio on photos |
+| `css/stats-bar-fullwidth.css` | `stats-bar-fullwidth` — vertical dividers between stat items on desktop, top-border fallback on mobile |
+| `css/woo-filters-sidebar.css` | `woo-filters-sidebar` — full WooCommerce filter block CSS (sticky sidebar, price slider, checkbox lists, colour swatches) |
 | `css/generic.css` | All other templates — minimal skeleton scoped to `.elayne-{slug}` with a heading rule and mobile breakpoint |
 
 To add CSS for a new template, create `css/{template-name}.css` using `TODO-slug` and `TODO-title` as placeholders. No PHP changes are required.
