@@ -12,7 +12,7 @@ class Application extends BaseApplication
 {
     public function __construct()
     {
-        parent::__construct('Elayne Pattern CLI', '1.7.0');
+        parent::__construct('Elayne Pattern CLI', '1.8.0');
 
         $this->add(new LayoutCreateCommand());
         $this->add(new PatternCreateCommand());
