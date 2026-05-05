@@ -72,13 +72,16 @@ You will be prompted for:
 ### Non-interactive (flags)
 
 ```bash
-vendor/bin/elayne pattern:create my-slug \
+vendor/bin/elayne pattern:create \
   --title="My Pattern" \
+  --slug="elayne/my-pattern" \
   --template=hero-cover \
   --category=elayne/hero \
   --keywords="hero, banner" \
   --output-dir=./patterns
 ```
+
+The `--slug` option accepts the full `elayne/<slug>` form or just the bare slug — the `elayne/` prefix is stripped automatically. A positional `slug` argument is also accepted for backwards compatibility.
 
 ### Scaffold a style variation (interactive)
 
