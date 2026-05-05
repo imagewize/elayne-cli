@@ -39,16 +39,16 @@ class PatternListCommand extends Command
                 ['blog-post-columns',           'wp:query-driven 3-column post grid (portrait images)'],
                 ['team-grid',                   'Team member profile grid — photo, name, title, bio'],
                 // WooCommerce store templates
-                ['woo-hero-split',              'WooCommerce — two-column hero: text + CTA left, decorative cover right'],
-                ['woo-ticker-band',             'WooCommerce — server-rendered marquee ticker bar (needs render_block filter)'],
-                ['woo-categories-bento',        'WooCommerce — CSS bento grid: one large featured card + four smaller cards'],
-                ['woo-product-grid',            'WooCommerce — section header with View All + product-collection 4-col grid'],
-                ['woo-text-image-watermark',    'WooCommerce — two-column brand story: monogram watermark left, text + stats right'],
-                ['woo-testimonials-grid',       'WooCommerce — three-column testimonial cards with star ratings and avatar circles'],
-                ['woo-newsletter-band',         'WooCommerce — full-bleed newsletter signup with decorative eyebrow'],
-                ['woo-landing-shell',           'WooCommerce — store homepage shell that composes sub-patterns in sequence'],
-                ['woo-cart-page',               'WooCommerce — full-width cart page wrapper (Inserter: false)'],
-                ['woo-checkout-page',           'WooCommerce — full-width checkout page wrapper (Inserter: false)'],
+                ['woo-hero',                    'WooCommerce — two-column hero: text + CTA left, decorative cover right'],
+                ['woo-ticker',                  'WooCommerce — server-rendered marquee ticker bar (needs render_block filter)'],
+                ['woo-shop-categories',         'WooCommerce — CSS bento grid: one large featured card + four smaller cards'],
+                ['woo-featured-products',       'WooCommerce — section header with View All + product-collection 4-col grid'],
+                ['woo-our-story',               'WooCommerce — two-column brand story: monogram watermark left, text + stats right'],
+                ['woo-testimonials',            'WooCommerce — three-column testimonial cards with star ratings and avatar circles'],
+                ['woo-newsletter',              'WooCommerce — full-bleed newsletter signup with decorative eyebrow'],
+                ['woo-shop-landing',            'WooCommerce — store homepage shell that composes sub-patterns in sequence'],
+                ['woo-cart',                    'WooCommerce — full-width cart page wrapper (Inserter: false)'],
+                ['woo-checkout',                'WooCommerce — full-width checkout page wrapper (Inserter: false)'],
             ]
         );
 
@@ -62,6 +62,13 @@ class PatternListCommand extends Command
                 ['testimonial-card.txt',              'Testimonial with stars, quote, author'],
                 ['two-button-group.txt',              'Primary + outline button pair'],
                 ['overlay-grid-cover-card.txt',       'Portrait cover image card + floating badge (use wp:cover, NOT wp:image)'],
+                // WP 6.6+ block validation guards
+                ['valid-cover.txt',                   'wp:cover with all required attrs: dimRatio, backgroundColor/customGradient, minHeight (root integer) + minHeightUnit'],
+                ['valid-columns-wp66.txt',            'wp:columns without inline gap/margin; isStackedOnMobile:false → is-not-stacked-on-mobile class'],
+                ['responsive-grid-min-width.txt',     'wp:group grid layout with minimumColumnWidth — preferred over wp:columns for 3+ columns'],
+                ['valid-button-attr-order.txt',       'wp:button with className/colors before style; font size via style.typography.fontSize'],
+                ['valid-fullwidth-section.txt',       'alignfull outer group + margin reset (top/bottom:"0" no units) + constrained inner group'],
+                ['valid-heading-with-preset.txt',     'wp:heading with fontSize slug in JSON and matching has-{slug}-font-size utility class in HTML'],
             ]
         );
 

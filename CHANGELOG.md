@@ -4,6 +4,22 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.4.0] - 2026-05-05
+
+### Added
+
+- Six WP 6.6+ block validation guard snippets in `snippets/`:
+  - `valid-cover.txt` — three `wp:cover` variants (solid color, gradient, dimRatio:0) with all required root-level attrs (`minHeight` integer, `minHeightUnit`, `dimRatio` integer, `backgroundColor`/`customGradient`) and correct `has-background-dim-{N}` span classes.
+  - `valid-columns-wp66.txt` — `wp:columns` without inline `gap`/`margin`; uses `isStackedOnMobile:false` → `is-not-stacked-on-mobile` class; includes equal and 55/45 split variants.
+  - `responsive-grid-min-width.txt` — `wp:group` grid layout with `minimumColumnWidth` (the preferred pattern for 3+ columns over `wp:columns`); reference table of `rem` values by card complexity.
+  - `valid-button-attr-order.txt` — `wp:button` with root-level attrs (`className`, `backgroundColor`, `textColor`, `borderColor`) before `style`; font size via `style.typography.fontSize` (not root `fontSize`); filled + outline variants with button-pair wrapper.
+  - `valid-fullwidth-section.txt` — `alignfull` outer group with margin reset (`top`/`bottom` as `"0"` without units) and horizontal padding on outer; constrained inner group for content width.
+  - `valid-heading-with-preset.txt` — `wp:heading` with `fontSize` slug in JSON and matching `has-{slug}-font-size` utility class in HTML; h1/h2/h3 variants across the store font-size scale.
+
+### Fixed
+
+- `PatternListCommand`: corrected WooCommerce template names to match actual file names — the list had been showing the pre-rename display names (`woo-hero-split`, `woo-ticker-band`, `woo-categories-bento`, `woo-product-grid`, `woo-text-image-watermark`, `woo-testimonials-grid`, `woo-newsletter-band`, `woo-landing-shell`, `woo-cart-page`, `woo-checkout-page`) instead of the current file names used by `PatternCreateCommand` (`woo-hero`, `woo-ticker`, `woo-shop-categories`, `woo-featured-products`, `woo-our-story`, `woo-testimonials`, `woo-newsletter`, `woo-shop-landing`, `woo-cart`, `woo-checkout`).
+
 ## [1.3.2] - 2026-05-03
 
 ### Fixed
