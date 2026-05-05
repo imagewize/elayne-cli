@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.4.3] - 2026-05-05
+
+### Fixed
+
+- `bin/elayne`: replaced hardcoded autoloader paths with a directory walk-up that searches for `vendor/autoload.php` from `bin/` upward. Works correctly both in standalone mode and when installed as a Composer dependency, regardless of nesting depth.
+
 ## [1.4.2] - 2026-05-05
 
 ### Fixed
