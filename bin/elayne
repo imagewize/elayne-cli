@@ -1,23 +1,17 @@
 #!/usr/bin/env php
 <?php
 
-// Support both standalone use and installation as a Composer dependency
-$autoloaders = [
-    __DIR__ . '/../vendor/autoload.php',      // standalone
-    __DIR__ . '/../../../../autoload.php',     // installed as vendor/imagewize/elayne-cli
-];
-
-$loaded = false;
-foreach ($autoloaders as $autoloader) {
-    if (file_exists($autoloader)) {
-        require $autoloader;
-        $loaded = true;
+$dir = __DIR__;
+while ($dir !== dirname($dir)) {
+    if (file_exists($dir . '/vendor/autoload.php')) {
+        require $dir . '/vendor/autoload.php';
         break;
     }
+    $dir = dirname($dir);
 }
 
-if (!$loaded) {
-    fwrite(STDERR, "Autoloader not found. Run 'composer install' in the elayne-cli directory or the theme root.\n");
+if (!class_exists(\Imagewize\ElaynePatternCli\Application::class)) {
+    fwrite(STDERR, "Autoloader not found. Run 'composer install'.\n");
     exit(1);
 }
 
