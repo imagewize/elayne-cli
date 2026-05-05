@@ -70,6 +70,7 @@ You will be prompted for:
 | Output directory | Defaults to `./patterns/` if it exists, otherwise `./` |
 | Create CSS file? | Use `--with-style` to also generate a companion CSS file from a template-matched CSS stub |
 | CSS output directory | Use `--style-dir` to specify where CSS files are written (default: `assets/styles/block-styles/`) |
+| Shell only | Use `--shell-only` to generate PHP header + paste marker only (no block JSON) for editor-first workflow |
 
 ### Non-interactive (flags)
 
@@ -83,6 +84,17 @@ vendor/bin/elayne pattern:create \
   --output-dir=./patterns \
   --with-style \
   --style-dir=./assets/styles/block-styles
+```
+
+With `--shell-only` (editor-first workflow):
+
+```bash
+vendor/bin/elayne pattern:create \
+  --title="My Pattern" \
+  --slug="elayne/my-pattern" \
+  --template=hero-cover \
+  --category=elayne/hero \
+  --shell-only
 ```
 
 The `--slug` option accepts the full `elayne/<slug>` form or just the bare slug — the `elayne/` prefix is stripped automatically. A positional `slug` argument is also accepted for backwards compatibility.
