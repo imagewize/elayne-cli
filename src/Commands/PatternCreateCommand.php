@@ -73,7 +73,8 @@ class PatternCreateCommand extends Command
             ->addOption('keywords', 'k', InputOption::VALUE_REQUIRED, 'Comma-separated keywords')
             ->addOption('output-dir', 'o', InputOption::VALUE_REQUIRED, 'Output directory (default: ./patterns/ or ./)')
             ->addOption('with-style', null, InputOption::VALUE_NONE, 'Also create a CSS file in the style directory')
-            ->addOption('style-dir', null, InputOption::VALUE_REQUIRED, 'CSS output directory (default: assets/styles/block-styles/)');
+            ->addOption('style-dir', null, InputOption::VALUE_REQUIRED, 'CSS output directory (default: assets/styles/block-styles/)')
+            ->addOption('shell-only', null, InputOption::VALUE_NONE, 'Generate PHP header + paste marker only — no block JSON (editor-first workflow)');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
@@ -149,7 +150,8 @@ class PatternCreateCommand extends Command
             return Command::FAILURE;
         }
 
-        $content = $this->buildPattern($title, $slug, $category, (string) $keywords, (string) $template);
+        $shellOnly = (bool) $input->getOption('shell-only');
+        $content = $this->buildPattern($title, $slug, $category, (string) $keywords, (string) $template, $shellOnly);
 
         $filename = rtrim($outputDir, '/') . '/' . $slug . '.php';
 
@@ -188,17 +190,26 @@ class PatternCreateCommand extends Command
         }
 
         $io->success("Pattern created: {$filename}");
-        $io->note([
+        $notes = [
             'Slug: elayne/' . $slug,
             'Category: ' . $category,
-            'Next: add content blocks inside the TODO markers, then flush WP cache.',
-        ]);
+        ];
+        if ($shellOnly) {
+            $notes[] = 'Editor-first: build in WP editor → Copy all blocks → replace the PASTE BLOCKS HERE comment, then flush WP cache.';
+        } else {
+            $notes[] = 'Next: add content blocks inside the TODO markers, then flush WP cache.';
+        }
+        $io->note($notes);
 
         return Command::SUCCESS;
     }
 
-    private function buildPattern(string $title, string $slug, string $category, string $keywords, string $template): string
+    private function buildPattern(string $title, string $slug, string $category, string $keywords, string $template, bool $shellOnly = false): string
     {
+        if ($shellOnly) {
+            return $this->buildShellTemplate($title, $slug, $category, $keywords);
+        }
+
         if ($template === 'blank' || !array_key_exists($template, self::TEMPLATES)) {
             return $this->buildBlankTemplate($title, $slug, $category, $keywords);
         }
@@ -235,6 +246,27 @@ class PatternCreateCommand extends Command
  * Block Types: core/group
  */
 ?>
+
+PHP;
+    }
+
+    private function buildShellTemplate(string $title, string $slug, string $category, string $keywords): string
+    {
+        $keywordsLine = $keywords ?: $slug;
+
+        return <<<PHP
+<?php
+/**
+ * Title: {$title}
+ * Slug: elayne/{$slug}
+ * Description: {$title}
+ * Categories: {$category}
+ * Keywords: {$keywordsLine}
+ * Viewport Width: 1200
+ * Block Types: core/group
+ */
+?>
+<!-- PASTE BLOCKS HERE: Build in WP editor → Copy all blocks → replace this comment -->
 
 PHP;
     }
