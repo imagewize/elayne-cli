@@ -2,6 +2,7 @@
 
 namespace Imagewize\ElaynePatternCli;
 
+use Imagewize\ElaynePatternCli\Commands\LayoutCreateCommand;
 use Imagewize\ElaynePatternCli\Commands\PatternCreateCommand;
 use Imagewize\ElaynePatternCli\Commands\PatternListCommand;
 use Imagewize\ElaynePatternCli\Commands\StyleCreateCommand;
@@ -13,6 +14,7 @@ class Application extends BaseApplication
     {
         parent::__construct('Elayne Pattern CLI', '1.7.0');
 
+        $this->add(new LayoutCreateCommand());
         $this->add(new PatternCreateCommand());
         $this->add(new PatternListCommand());
         $this->add(new StyleCreateCommand());
