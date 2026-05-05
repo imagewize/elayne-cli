@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.4.2] - 2026-05-05
+
+### Fixed
+
+- `bin/elayne`: autoloader discovery now falls back to the root project's `vendor/autoload.php` when the package is installed as a Composer dependency. Previously the script required `__DIR__ . '/../vendor/autoload.php'` which only exists in standalone mode, causing a fatal error when `composer pattern:create` was run from the theme directory.
+
 ## [1.4.1] - 2026-05-05
 
 ### Changed
