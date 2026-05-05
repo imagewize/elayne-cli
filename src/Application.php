@@ -11,7 +11,7 @@ class Application extends BaseApplication
 {
     public function __construct()
     {
-        parent::__construct('Elayne Pattern CLI', '1.5.1');
+        parent::__construct('Elayne Pattern CLI', '1.5.2');
 
         $this->add(new PatternCreateCommand());
         $this->add(new PatternListCommand());

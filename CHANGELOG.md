@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.5.2] - 2026-05-05
+
+### Changed
+
+- `hero-cover` template: inner constrained group now pre-populated with eyebrow paragraph, h1 headline, body text, and a primary+outline button pair — eliminates manual snippet assembly for every hero build.
+- `cta-fullwidth` template: inner constrained group now pre-populated with centered eyebrow, h2 heading, body text, and a centered primary+outline button pair.
+- `feature-grid-3col` template: added centered section-intro group (eyebrow + h2 + body) before the grid; each of the three card groups now contains a placeholder SVG icon, h3 heading, and body paragraph — grid uses `minimumColumnWidth: 20rem` for proper 3→2→1 responsive collapse.
+- `stats-bar-fullwidth` template: all four stat groups now contain a pre-built number paragraph (xx-large decorative, `primary-accent` color) and an uppercase label paragraph (`primary-alt` color) matching the dark `primary` background.
+- `two-column-text-image` template: left column (55%) now contains a content group pre-populated with eyebrow, h2 heading, body text, and a left-aligned primary+outline button pair.
+
 ## [1.5.1] - 2026-05-05
 
 ### Fixed
