@@ -11,11 +11,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - `pattern:create`: `--with-style` flag to generate a companion CSS file for the pattern, and `--style-dir` option to specify the CSS output directory (default: `assets/styles/block-styles/`).
 - `woo-filters-sidebar` template: sticky sidebar pattern with price slider, colour-chip attribute, and two checkbox-list attribute filters.
 - `woo-product-grid` template: filter-aware product-collection grid with sort toolbar and pagination.
-- `PatternCreateCommand::buildStyleCss()` method that generates CSS for WooCommerce product filter blocks with sticky positioning, filter group styling, price slider labels, checkbox lists, and colour swatches.
+- `css/` directory of CSS stub files used by `--with-style`: `css/{template}.css` is loaded when it exists, falling back to `css/generic.css`; tokens `TODO-slug` and `TODO-title` are replaced at generation time. Adding CSS for a new template requires only dropping a file in `css/` — no PHP changes needed.
+- `css/woo-filters-sidebar.css`: full CSS skeleton for WooCommerce product filter blocks — sticky sidebar positioning, CSS custom properties for the price slider and checkbox list, filter group dividers, heading typography, price label inputs, checkbox list sizing, colour swatch chips, and mobile overlay hiding.
+- `css/generic.css`: minimal skeleton scoped to `.elayne-{slug}` with a heading rule and a mobile breakpoint, used as the fallback for any template without a dedicated stub.
 
 ### Changed
 
-- `README.md`: added `woo-filters-sidebar` and `woo-product-grid` templates to the template table; documented `--with-style` and `--style-dir` options for `pattern:create`.
+- `README.md`: added `woo-filters-sidebar` and `woo-product-grid` templates to the template table; documented `--with-style` and `--style-dir` options for `pattern:create`; added CSS Stubs section.
+- `PatternCreateCommand::buildStyleCss()`: replaced hardcoded PHP heredocs with a file-based dispatcher that loads from `css/{template}.css` (falling back to `css/generic.css`) and warns when no stub is found.
 
 ## [1.4.4] - 2026-05-05
 

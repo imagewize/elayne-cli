@@ -68,7 +68,7 @@ You will be prompted for:
 | Template | Choose a starter layout (see below) |
 | Keywords | Comma-separated, used for WP pattern search |
 | Output directory | Defaults to `./patterns/` if it exists, otherwise `./` |
-| Create CSS file? | Use `--with-style` to also generate a companion CSS file |
+| Create CSS file? | Use `--with-style` to also generate a companion CSS file from a template-matched CSS stub |
 | CSS output directory | Use `--style-dir` to specify where CSS files are written (default: `assets/styles/block-styles/`) |
 
 ### Non-interactive (flags)
@@ -136,6 +136,17 @@ After generation, copy the `.json` file to your theme's `styles/` directory and 
 | `woo-checkout` | WooCommerce — full-width checkout page wrapper (`Inserter: false`) |
 | `woo-filters-sidebar` | WooCommerce — sticky sidebar: price slider + colour-chip attribute + two checkbox-list attributes |
 | `woo-product-grid` | WooCommerce — filter-aware product-collection grid with sort toolbar + pagination |
+
+## CSS Stubs
+
+When `--with-style` is passed, `pattern:create` writes a CSS file to the style output directory. It loads the stub from `css/{template}.css` if one exists, otherwise falls back to `css/generic.css`. The tokens `TODO-slug` and `TODO-title` in the stub are replaced with the pattern slug and title at generation time.
+
+| Stub | Used for |
+|---|---|
+| `css/woo-filters-sidebar.css` | `woo-filters-sidebar` template — full WooCommerce filter block CSS (sticky sidebar, price slider, checkbox lists, colour swatches) |
+| `css/generic.css` | All other templates — minimal skeleton scoped to `.elayne-{slug}` with a heading rule and mobile breakpoint |
+
+To add CSS for a new template, create `css/{template-name}.css` using `TODO-slug` and `TODO-title` as placeholders. No PHP changes are required.
 
 ## Snippets
 
