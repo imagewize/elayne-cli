@@ -65,6 +65,7 @@ class PatternCreateCommand extends Command
             ->setDescription('Scaffold a new Elayne block pattern')
             ->addArgument('slug', InputArgument::OPTIONAL, 'Pattern slug (without elayne/ prefix)')
             ->addOption('title', null, InputOption::VALUE_REQUIRED, 'Pattern title')
+            ->addOption('slug', null, InputOption::VALUE_REQUIRED, 'Pattern slug (with or without elayne/ prefix)')
             ->addOption('template', 't', InputOption::VALUE_REQUIRED, 'Starter template (' . implode(', ', array_keys(self::TEMPLATES)) . ')')
             ->addOption('category', 'c', InputOption::VALUE_REQUIRED, 'Pattern category')
             ->addOption('keywords', 'k', InputOption::VALUE_REQUIRED, 'Comma-separated keywords')
@@ -89,14 +90,18 @@ class PatternCreateCommand extends Command
             $title = $helper->ask($input, $output, $question);
         }
 
-        // Slug
-        $slug = $input->getArgument('slug');
+        // Slug — --slug option takes priority over positional argument
+        $slug = $input->getOption('slug') ?? $input->getArgument('slug');
         if (!$slug) {
             $defaultSlug = $this->titleToSlug($title);
             $question = new Question("<info>Pattern slug</info> [<comment>{$defaultSlug}</comment>]: ", $defaultSlug);
             $slug = $helper->ask($input, $output, $question);
         }
-        $slug = $this->titleToSlug((string) $slug);
+        $slug = (string) $slug;
+        if (str_starts_with($slug, 'elayne/')) {
+            $slug = substr($slug, 7);
+        }
+        $slug = $this->titleToSlug($slug);
 
         // Category
         $category = $input->getOption('category');
