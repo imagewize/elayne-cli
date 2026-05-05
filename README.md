@@ -68,6 +68,8 @@ You will be prompted for:
 | Template | Choose a starter layout (see below) |
 | Keywords | Comma-separated, used for WP pattern search |
 | Output directory | Defaults to `./patterns/` if it exists, otherwise `./` |
+| Create CSS file? | Use `--with-style` to also generate a companion CSS file |
+| CSS output directory | Use `--style-dir` to specify where CSS files are written (default: `assets/styles/block-styles/`) |
 
 ### Non-interactive (flags)
 
@@ -132,6 +134,8 @@ After generation, copy the `.json` file to your theme's `styles/` directory and 
 | `woo-shop-landing` | WooCommerce — store homepage shell that composes sub-patterns in sequence |
 | `woo-cart` | WooCommerce — full-width cart page wrapper (`Inserter: false`) |
 | `woo-checkout` | WooCommerce — full-width checkout page wrapper (`Inserter: false`) |
+| `woo-filters-sidebar` | WooCommerce — sticky sidebar: price slider + colour-chip attribute + two checkbox-list attributes |
+| `woo-product-grid` | WooCommerce — filter-aware product-collection grid with sort toolbar + pagination |
 
 ## Snippets
 

@@ -4,6 +4,19 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.5.0] - 2026-05-05
+
+### Added
+
+- `pattern:create`: `--with-style` flag to generate a companion CSS file for the pattern, and `--style-dir` option to specify the CSS output directory (default: `assets/styles/block-styles/`).
+- `woo-filters-sidebar` template: sticky sidebar pattern with price slider, colour-chip attribute, and two checkbox-list attribute filters.
+- `woo-product-grid` template: filter-aware product-collection grid with sort toolbar and pagination.
+- `PatternCreateCommand::buildStyleCss()` method that generates CSS for WooCommerce product filter blocks with sticky positioning, filter group styling, price slider labels, checkbox lists, and colour swatches.
+
+### Changed
+
+- `README.md`: added `woo-filters-sidebar` and `woo-product-grid` templates to the template table; documented `--with-style` and `--style-dir` options for `pattern:create`.
+
 ## [1.4.4] - 2026-05-05
 
 ### Added
