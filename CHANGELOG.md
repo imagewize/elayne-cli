@@ -4,6 +4,18 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.7.0] - 2026-05-05
+
+### Added
+
+- `pattern:create`: `--shell-only` flag to generate a PHP header + CSS stub only, with a `<!-- PASTE BLOCKS HERE -->` marker in place of block JSON. Supports the editor-first authoring workflow where the WP block editor is used as a WYSIWYG validator and the resulting markup is pasted into the pattern file.
+
+### Changed
+
+- Success note after `pattern:create --shell-only` guides the user through the editor-first steps instead of the scaffold-fill steps.
+
+---
+
 ## [1.6.0] - 2026-05-05
 
 ### Added
