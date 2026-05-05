@@ -56,6 +56,8 @@ class PatternCreateCommand extends Command
         'woo-shop-landing'            => 'WooCommerce — store homepage shell that composes sub-patterns in sequence',
         'woo-cart'                    => 'WooCommerce — full-width cart page wrapper (Inserter: false)',
         'woo-checkout'                => 'WooCommerce — full-width checkout page wrapper (Inserter: false)',
+        'woo-filters-sidebar'         => 'WooCommerce — sticky sidebar: price slider + colour-chip attribute + two checkbox-list attributes',
+        'woo-product-grid'            => 'WooCommerce — filter-aware product-collection grid with sort toolbar + pagination',
     ];
 
     protected function configure(): void
@@ -69,7 +71,9 @@ class PatternCreateCommand extends Command
             ->addOption('template', 't', InputOption::VALUE_REQUIRED, 'Starter template (' . implode(', ', array_keys(self::TEMPLATES)) . ')')
             ->addOption('category', 'c', InputOption::VALUE_REQUIRED, 'Pattern category')
             ->addOption('keywords', 'k', InputOption::VALUE_REQUIRED, 'Comma-separated keywords')
-            ->addOption('output-dir', 'o', InputOption::VALUE_REQUIRED, 'Output directory (default: ./patterns/ or ./)');
+            ->addOption('output-dir', 'o', InputOption::VALUE_REQUIRED, 'Output directory (default: ./patterns/ or ./)')
+            ->addOption('with-style', null, InputOption::VALUE_NONE, 'Also create a CSS file in the style directory')
+            ->addOption('style-dir', null, InputOption::VALUE_REQUIRED, 'CSS output directory (default: assets/styles/block-styles/)');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
@@ -160,6 +164,27 @@ class PatternCreateCommand extends Command
 
         file_put_contents($filename, $content);
 
+        // Create CSS file if --with-style flag is set
+        $withStyle = $input->getOption('with-style');
+        if ($withStyle) {
+            $styleDir = $input->getOption('style-dir');
+            if (!$styleDir) {
+                $cwd = (string) getcwd();
+                $styleDir = is_dir($cwd . '/assets/styles/block-styles') 
+                    ? $cwd . '/assets/styles/block-styles' 
+                    : $cwd . '/assets/styles/block-styles';
+            }
+
+            if (!is_dir($styleDir) && !mkdir($styleDir, 0755, true) && !is_dir($styleDir)) {
+                $io->warning("Could not create style directory: {$styleDir}");
+            } else {
+                $cssFilename = rtrim($styleDir, '/') . '/elayne-' . $slug . '.css';
+                $cssContent = $this->buildStyleCss($slug, $title);
+                file_put_contents($cssFilename, $cssContent);
+                $io->writeln(" <info>Style file created: {$cssFilename}</info>");
+            }
+        }
+
         $io->success("Pattern created: {$filename}");
         $io->note([
             'Slug: elayne/' . $slug,
@@ -218,5 +243,128 @@ PHP;
         $slug = (string) preg_replace('/[^a-z0-9\s-]/', '', $slug);
         $slug = (string) preg_replace('/[\s-]+/', '-', $slug);
         return trim($slug, '-');
+    }
+
+    private function buildStyleCss(string $slug, string $title): string
+    {
+        $blockClass = '.wp-block-woocommerce-product-filters.is-style-elayne-' . $slug;
+
+        return <<<CSS
+/* ── Elayne {$title} ── */
+
+/* Sticky sidebar positioning */
+.elayne-{$slug} {
+	position: sticky;
+	top: 2rem;
+	align-self: flex-start;
+}
+
+/* ── Product Filters Container ── */
+{$blockClass} {
+	--wc-product-filter-price-slider: var(--wp--preset--color--primary);
+	--wc-product-filter-price-slider-handle: var(--wp--preset--color--primary);
+	--wc-product-filter-price-slider-handle-border: var(--wp--preset--color--primary);
+	--wc-product-filter-checkbox-list-option-element-border: currentColor;
+	--wc-product-filter-checkbox-list-option-element-selected: var(--wp--preset--color--primary);
+}
+
+/* Filter group sections — divider + spacing */
+{$blockClass} .wc-block-product-filters__overlay-content {
+	display: flex;
+	flex-direction: column;
+	gap: 0;
+	padding: 0;
+	overflow: visible;
+}
+
+{$blockClass} .wp-block-woocommerce-product-filter-price,
+{$blockClass} .wp-block-woocommerce-product-filter-attribute {
+	padding-bottom: 1.5rem;
+	margin-bottom: 1.5rem;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+{$blockClass} .wp-block-woocommerce-product-filter-attribute:last-child {
+	padding-bottom: 0;
+	margin-bottom: 0;
+	border-bottom: none;
+}
+
+/* ── Filter group headings ── */
+{$blockClass} .wp-block-heading,
+{$blockClass} legend {
+	font-size: 0.68rem;
+	font-weight: 600;
+	letter-spacing: 0.2em;
+	text-transform: uppercase;
+	color: var(--wp--preset--color--main);
+	margin-bottom: 1rem;
+}
+
+/* ── Price slider labels ── */
+{$blockClass} .wc-block-product-filter-price-slider .text input[type="text"] {
+	font-size: 0.75rem;
+	border: 1px solid rgba(0, 0, 0, 0.12);
+	border-radius: 0;
+	padding: 0.4rem 0.6rem;
+	max-width: 64px;
+	color: var(--wp--preset--color--main);
+}
+
+/* ── Checkbox list ── */
+{$blockClass} .wc-block-product-filter-checkbox-list__item {
+	margin-bottom: 0.6rem;
+}
+
+{$blockClass} .wc-block-product-filter-checkbox-list__text-wrapper {
+	font-size: 0.82rem;
+	color: var(--wp--preset--color--main-accent);
+}
+
+{$blockClass} .wc-block-product-filter-checkbox-list__count {
+	font-size: 0.72rem;
+	color: var(--wp--preset--color--main-accent);
+	opacity: 0.65;
+}
+
+/* ── Colour swatches (chips display) ── */
+{$blockClass} .wc-block-product-filter-chips {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+}
+
+{$blockClass} .wc-block-product-filter-chips__item {
+	width: 28px;
+	height: 28px;
+	min-width: 28px;
+	border-radius: 0;
+	border: 2px solid transparent;
+	font-size: 0;
+	overflow: hidden;
+	transition: border-color 0.2s;
+}
+
+{$blockClass} .wc-block-product-filter-chips__item:is([aria-pressed="true"], .is-active) {
+	border-color: var(--wp--preset--color--primary);
+}
+
+{$blockClass} .wc-block-product-filter-chips__item button {
+	width: 100%;
+	height: 100%;
+	padding: 0;
+	font-size: 0;
+	border: none;
+	cursor: pointer;
+}
+
+/* ── Mobile: overlay button hidden on narrow sidebar ── */
+@media (min-width: 601px) {
+	{$blockClass} .wc-block-product-filters__open-overlay {
+		display: none;
+	}
+}
+
+CSS;
     }
 }
