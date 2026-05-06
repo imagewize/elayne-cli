@@ -12,6 +12,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - `layouts/` directory: 8 PHP layout stubs — `full-width`, `two-column`, `three-column`, `sidebar-left`, `sidebar-right`, `hero-image-left`, `hero-image-right`, `landing-page` — each with placeholder tokens replaced at generation time.
 - `docs/layouts.md`: layout planning document listing the 8-layout set, source references from the Elayne theme pattern library, and a summary of the 127-pattern library.
 - `README.md`: documented `layout:create` command with prompts table and non-interactive example; added Layouts table listing all 8 skeletons; added `layout:create` to the Composer scripts block and PATH shorthand examples.
+- `.vibe/config.toml`: Vibe CLI configuration — model settings, tool permissions, and session logging.
+- `.vibe/prompts/vibe.md`: project-specific instructions for the Vibe CLI assistant.
 
 ---
 
