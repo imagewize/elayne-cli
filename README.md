@@ -1,6 +1,6 @@
 # Elayne CLI
 
-CLI scaffolding tool for [Elayne](https://github.com/imagewize/elayne), a WordPress block theme. Generates WordPress block pattern PHP files and theme style variation JSON files interactively from pre-built templates.
+CLI scaffolding tool for [Elayne](https://github.com/imagewize/elayne), a WordPress block theme. Generates WordPress block pattern PHP files, layout patterns, and theme style variation JSON files interactively from pre-built templates.
 
 ## Requirements
 
@@ -47,7 +47,7 @@ After reloading your shell (`source ~/.zshrc`) you can run `elayne pattern:list`
 
 ## Usage
 
-### List available templates, snippets, categories, and style presets
+### List available templates, snippets, layouts, categories, and style presets
 
 ```bash
 vendor/bin/elayne pattern:list
@@ -59,21 +59,43 @@ vendor/bin/elayne pattern:list
 vendor/bin/elayne pattern:create
 ```
 
-You will be prompted for:
+You will be prompted for pattern title, slug, category, template, keywords, and output directory. Use `--with-style` to also generate a companion CSS file, and `--shell-only` for an editor-first workflow (PHP header + paste marker only).
 
-| Prompt | Notes |
-|---|---|
-| Pattern title | Human-readable label |
-| Pattern slug | Auto-derived from title; prefixed with `elayne/` |
-| Category | Choose from the built-in `elayne/*` categories |
-| Template | Choose a starter layout (see below) |
-| Keywords | Comma-separated, used for WP pattern search |
-| Output directory | Defaults to `./patterns/` if it exists, otherwise `./` |
-| Create CSS file? | Use `--with-style` to also generate a companion CSS file from a template-matched CSS stub |
-| CSS output directory | Use `--style-dir` to specify where CSS files are written (default: `assets/styles/block-styles/`) |
-| Shell only | Use `--shell-only` to generate PHP header + paste marker only (no block JSON) for editor-first workflow |
+### Scaffold a new layout pattern (interactive)
 
-### Non-interactive (flags)
+```bash
+vendor/bin/elayne layout:create
+```
+
+You will be prompted for pattern title, slug, layout type, category, keywords, and output directory. Use `--shell-only` for an editor-first workflow.
+
+Example non-interactive usage:
+
+```bash
+vendor/bin/elayne layout:create \
+  --title="Home Hero" \
+  --slug="elayne/home-hero" \
+  --layout=hero-image-right \
+  --category=elayne/hero \
+  --keywords="hero, home" \
+  --output-dir=./patterns
+```
+
+### Scaffold a new style variation (interactive)
+
+```bash
+vendor/bin/elayne style:create
+```
+
+You will be prompted for style name, vertical preset (or custom colors), and output directory.
+
+Example non-interactive usage:
+
+```bash
+vendor/bin/elayne style:create --name="Ocean Legal" --vertical=legal
+```
+
+### Non-interactive pattern creation
 
 ```bash
 vendor/bin/elayne pattern:create \
@@ -98,161 +120,18 @@ vendor/bin/elayne pattern:create \
   --shell-only
 ```
 
-The `--slug` option accepts the full `elayne/<slug>` form or just the bare slug — the `elayne/` prefix is stripped automatically. A positional `slug` argument is also accepted for backwards compatibility.
+The `--slug` option accepts the full `elayne/<slug>` form or just the bare slug — the `elayne/` prefix is stripped automatically.
 
-### Scaffold a layout pattern (interactive)
+## Documentation
 
-```bash
-vendor/bin/elayne layout:create
-```
+Detailed reference material is available in the [docs/](docs/) directory:
 
-You will be prompted for:
-
-| Prompt | Notes |
-|---|---|
-| Pattern title | Human-readable label |
-| Pattern slug | Auto-derived from title; prefixed with `elayne/` |
-| Layout | Choose one of the 8 structural layout skeletons (see below) |
-| Category | Choose from the built-in `elayne/*` categories |
-| Keywords | Comma-separated, used for WP pattern search |
-| Output directory | Defaults to `./patterns/` if it exists, otherwise `./` |
-| Shell only | Use `--shell-only` to generate PHP header + paste marker only (no block markup) for editor-first workflow |
-
-Non-interactive:
-
-```bash
-vendor/bin/elayne layout:create \
-  --title="Home Hero" \
-  --slug="elayne/home-hero" \
-  --layout=hero-image-right \
-  --category=elayne/hero \
-  --keywords="hero, home" \
-  --output-dir=./patterns
-```
-
-### Scaffold a style variation (interactive)
-
-```bash
-vendor/bin/elayne style:create
-```
-
-You will be prompted for:
-
-| Prompt | Notes |
-|---|---|
-| Style name | Display name shown in the WP editor (e.g. "Ocean Legal") |
-| Vertical | Choose a preset palette or enter custom hex values |
-| Brand colors | 4 hex values — primary, accent, alt, alt-accent (preset defaults shown) |
-| Output directory | Defaults to `./styles/` if it exists, otherwise `./` |
-
-Non-interactive:
-
-```bash
-vendor/bin/elayne style:create --name="Ocean Legal" --vertical=legal
-```
-
-After generation, copy the `.json` file to your theme's `styles/` directory and activate it via **Appearance → Editor → Styles**.
-
-## Templates
-
-| Template | Description |
-|---|---|
-| `blank` | Empty pattern with header only |
-| `hero-cover` | Full-bleed `wp:cover` with bottom-center content |
-| `cta-fullwidth` | Full-width call-to-action band |
-| `feature-grid-3col` | Full-width section with 3 feature cards |
-| `stats-bar-fullwidth` | Dark full-width stats/numbers bar |
-| `two-column-text-image` | Text left, image right two-column layout |
-| `header-standard` | Standard header — logo, navigation, social links |
-| `footer-standard` | Standard footer — brand blurb, nav columns, subnav |
-| `testimonials-grid` | Responsive testimonial card grid with reviewer info |
-| `pricing-comparison` | Three-tier pricing table with elevated recommended card |
-| `blog-post-columns` | `wp:query`-driven 3-column post grid (portrait images) |
-| `team-grid` | Team member profile grid — photo, name, title, bio |
-| `woo-hero` | WooCommerce — two-column hero: text + CTA left, decorative cover right |
-| `woo-ticker` | WooCommerce — server-rendered marquee ticker bar (needs `render_block` filter) |
-| `woo-shop-categories` | WooCommerce — CSS bento grid: one large featured card + four smaller cards |
-| `woo-featured-products` | WooCommerce — section header with View All + product-collection 4-col grid |
-| `woo-our-story` | WooCommerce — two-column brand story: monogram watermark left, text + stats right |
-| `woo-testimonials` | WooCommerce — three-column testimonial cards with star ratings and avatar circles |
-| `woo-newsletter` | WooCommerce — full-bleed newsletter signup with decorative eyebrow |
-| `woo-shop-landing` | WooCommerce — store homepage shell that composes sub-patterns in sequence |
-| `woo-cart` | WooCommerce — full-width cart page wrapper (`Inserter: false`) |
-| `woo-checkout` | WooCommerce — full-width checkout page wrapper (`Inserter: false`) |
-| `woo-filters-sidebar` | WooCommerce — sticky sidebar: price slider + colour-chip attribute + two checkbox-list attributes |
-| `woo-product-grid` | WooCommerce — filter-aware product-collection grid with sort toolbar + pagination |
-
-## Layouts
-
-| Layout | Description |
-|---|---|
-| `full-width` | Single column, constrained — simplest starting point |
-| `two-column` | 50/50 `wp:columns` block |
-| `three-column` | CSS grid with 3 equal `wp:group` columns |
-| `sidebar-left` | Narrow left sidebar (33%) + wide content area (66%) |
-| `sidebar-right` | Wide content area (66%) + narrow right sidebar (33%) |
-| `hero-image-left` | Cover image left + heading, text, CTA right |
-| `hero-image-right` | Heading, text, CTA left + cover image right |
-| `landing-page` | Hero section + 3-column features row + CTA — no header/footer wrapper |
-
-## CSS Stubs
-
-When `--with-style` is passed, `pattern:create` writes a CSS file to the style output directory. It loads the stub from `css/{template}.css` if one exists, otherwise falls back to `css/generic.css`. The tokens `TODO-slug` and `TODO-title` in the stub are replaced with the pattern slug and title at generation time.
-
-| Stub | Used for |
-|---|---|
-| `css/hero-cover.css` | `hero-cover` — overlay tweaks and mobile full-width button stacking |
-| `css/cta-fullwidth.css` | `cta-fullwidth` — centres button row, stacks buttons full-width on mobile |
-| `css/feature-grid-3col.css` | `feature-grid-3col` — fixes `is-layout-flow` margin on grid cards, hover shadow transition |
-| `css/testimonials-grid.css` | `testimonials-grid` — fixes `is-layout-flow` margin, opening quote mark via `::before` |
-| `css/team-grid.css` | `team-grid` — fixes `is-layout-flow` margin, enforces 4:5 portrait aspect ratio on photos |
-| `css/stats-bar-fullwidth.css` | `stats-bar-fullwidth` — vertical dividers between stat items on desktop, top-border fallback on mobile |
-| `css/woo-filters-sidebar.css` | `woo-filters-sidebar` — full WooCommerce filter block CSS (sticky sidebar, price slider, checkbox lists, colour swatches) |
-| `css/generic.css` | All other templates — minimal skeleton scoped to `.elayne-{slug}` with a heading rule and mobile breakpoint |
-
-To add CSS for a new template, create `css/{template-name}.css` using `TODO-slug` and `TODO-title` as placeholders. No PHP changes are required.
-
-## Snippets
-
-Reusable block markup fragments listed by `pattern:list`. Copy them into an existing pattern file as a starting point.
-
-| Snippet | Description |
-|---|---|
-| `3col-grid-wrapper` | Responsive 3-column `wp:columns` wrapper — columns stack on mobile |
-| `eyebrow-heading-body` | Eyebrow label + heading + body paragraph group for constrained sections |
-| `overlay-grid-cover-card` | Portrait `wp:cover` card with a floating badge overlay — drop inside a `wp:column` |
-| `stat-item` | Single stat (large number + label) for use inside a dark stats-bar column |
-| `testimonial-card` | Testimonial card (quote, reviewer name, role) for a testimonials grid column |
-| `two-button-group` | Primary + outline button pair (`wp:buttons`) for use after heading/body content |
-| `valid-button-attr-order` | WP 6.6+ `wp:button` — root-level attrs (`className`, colors, `borderColor`) before `style`; filled and outline variants |
-| `valid-columns-wp66` | WP 6.6+ `wp:columns` without inline `gap`/`margin`; equal and 55/45 split variants |
-| `valid-cover` | WP 6.6+ `wp:cover` — solid color, gradient, and `dimRatio:0` variants with all required root-level attrs |
-| `valid-fullwidth-section` | `alignfull` outer group with margin reset and constrained inner group |
-| `valid-heading-with-preset` | `wp:heading` with `fontSize` slug + matching utility class; h1/h2/h3 variants |
-| `responsive-grid-min-width` | `wp:group` grid layout using `minimumColumnWidth` — preferred over `wp:columns` for 3+ columns |
-
-## Style variation presets
-
-| Vertical | Colors |
-|---|---|
-| `custom` | Enter your own hex values |
-| `legal` | Navy blue + gold |
-| `plumbing` | Dark blue + orange |
-| `spa` | Sage green + sand |
-| `food-beverage` | Burgundy + gold |
-
-The generated `styles/*.json` file defines the full color palette (`palette`, `gradients`, `duotone`) that maps to the Elayne theme's design tokens.
-
-## Categories
-
-```
-header                 footer
-elayne/hero            elayne/features        elayne/call-to-action
-elayne/testimonial     elayne/team            elayne/statistics
-elayne/contact         elayne/posts           elayne/pricing
-elayne/banner          elayne/card-simple     elayne/card-extended
-elayne/card-profiles   elayne/woocommerce
-```
+- [📄 Templates](docs/templates.md) — Available pattern templates and descriptions
+- [📄 Layouts](docs/layouts.md) — Structural layout patterns for the `layout:create` command
+- [📄 Snippets](docs/snippets.md) — Reusable block markup fragments
+- [📄 Categories](docs/categories.md) — Available pattern categories
+- [📄 CSS Stubs](docs/css-stubs.md) — CSS file generation and custom stubs
+- [📄 Style Presets](docs/style-presets.md) — Theme style variation color palettes
 
 ## Generated pattern file
 
@@ -276,4 +155,4 @@ After generation, add your block markup inside the file and flush the WordPress 
 
 ## License
 
-GPL-2.0-or-later — see [LICENSE](LICENSE) for details.
+GPL-2.0-or-later — see [LICENSE.md](LICENSE.md) for details.

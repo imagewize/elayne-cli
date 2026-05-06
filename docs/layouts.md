@@ -1,29 +1,41 @@
 # Layout Patterns
 
-Ready-made WordPress block layout templates as foundations for page design. Keep these minimal — they serve as starting points to be adjusted with HTML and CSS per page.
+Ready-made WordPress block layout templates used by the `layout:create` CLI command. These serve as structural foundations for page design.
 
-These layouts are the planned stub set for the `layout:create` CLI command. Source material is drawn from the Elayne theme pattern library (`elayne/patterns/`), which contains 127 patterns across structural templates, section components, and industry-specific patterns.
+Source material is drawn from the Elayne theme pattern library (`elayne/patterns/`), which contains 127 patterns across structural templates, section components, and industry-specific patterns.
+
+## Available Layouts
+
+| Layout | Description |
+|---|---|
+| `full-width` | Single column, constrained — simplest starting point |
+| `two-column` | 50/50 `wp:columns` block |
+| `three-column` | CSS grid with 3 equal `wp:group` columns |
+| `sidebar-left` | Narrow left sidebar (33%) + wide content area (66%) |
+| `sidebar-right` | Wide content area (66%) + narrow right sidebar (33%) |
+| `hero-image-left` | Cover image left + heading, text, CTA right |
+| `hero-image-right` | Heading, text, CTA left + cover image right |
+| `landing-page` | Hero section + 3-column features row + CTA — no header/footer wrapper |
+
+## Usage
+
+Scaffold a new layout pattern:
+
+```bash
+# Interactive
+vendor/bin/elayne layout:create
+
+# Non-interactive
+vendor/bin/elayne layout:create --layout=hero-image-right --title="Home Hero"
+```
 
 ---
 
-## Planned Layout Set (8 layouts)
+## Reference Implementations
 
-| Slug | Description | Source in Elayne theme |
-|---|---|---|
-| `full-width` | Single column, constrained — simplest starting point | `template-page.php` |
-| `two-column` | 50/50 columns block | — |
-| `three-column` | Grid with 3 equal groups | — |
-| `sidebar-left` | Narrow left column + wide content area | `template-page-left-sidebar.php` |
-| `sidebar-right` | Wide content area + narrow right column | `template-page-right-sidebar.php` |
-| `hero-image-left` | Cover image left + stacked heading/text/CTA right | `hero-modern-light.php` |
-| `hero-image-right` | Stacked heading/text/CTA left + cover image right | `hero-modern-dark.php` |
-| `landing-page` | Hero + features row + CTA, no header/footer | `template-landing-page.php` |
+### Two Column
 
----
-
-## Two Column
-
-### Using Columns Block
+Using Columns Block:
 ```html
 <!-- wp:columns -->
 <!-- wp:column -->
@@ -36,11 +48,9 @@ Right content
 <!-- /wp:columns -->
 ```
 
----
+### Three Column
 
-## Three Column
-
-### Using Grid Block
+Using Grid Block:
 ```html
 <!-- wp:group {"layout":{"type":"grid"}} -->
 <div class="wp-block-group">
@@ -59,11 +69,9 @@ Right content
 <!-- /wp:group -->
 ```
 
----
+### Hero Layouts
 
-## Hero Layouts
-
-### Hero: Left Cover + Right Stacked Content
+#### Hero: Left Cover + Right Stacked Content
 ```html
 <!-- wp:group {"layout":{"type":"grid"}} -->
 <div class="wp-block-group">
@@ -101,7 +109,7 @@ Right content
 <!-- /wp:group -->
 ```
 
-### Hero: Cover Right + Left Stacked Content
+#### Hero: Cover Right + Left Stacked Content
 ```html
 <!-- wp:group {"layout":{"type":"grid"}} -->
 <div class="wp-block-group">
@@ -146,5 +154,4 @@ Right content
 - These are intentionally basic structural patterns using WordPress block markup
 - Add classes, modifiers, and styles per project requirements
 - Combine patterns as needed for complex pages
-- Sidebar, full-width, and landing-page markup to be extracted from Elayne theme source files listed in the table above
 - The Elayne theme pattern library (`elayne/patterns/`) has 127 patterns: 16 structural page templates, ~80 section components, 11 WooCommerce patterns, and 31 industry-specific patterns (legal, plumbing, salon, spa, F&B)
