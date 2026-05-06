@@ -4,6 +4,25 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.8.1] - 2026-05-06
+
+### Added
+
+- `LICENSE.md`: GPL-2.0-or-later license file.
+- `docs/templates.md`: dedicated documentation for pattern templates.
+- `docs/snippets.md`: dedicated documentation for reusable block markup snippets.
+- `docs/categories.md`: dedicated documentation for pattern categories.
+- `docs/css-stubs.md`: dedicated documentation for CSS stub system.
+- `docs/style-presets.md`: dedicated documentation for style variation presets.
+
+### Changed
+
+- `README.md`: restructured to be more concise; moved reference tables to dedicated documentation files in `docs/`; added Documentation section with links to all reference material; added non-interactive example for `layout:create` command.
+- `docs/layouts.md`: updated with Available Layouts table, Usage section, and clarified relationship to `layout:create` command.
+- `.vibe/prompts/vibe.md`: emphasized atomic commits, branch usage, and prohibition on AI attribution in commit messages.
+
+---
+
 ## [1.8.0] - 2026-05-06
 
 ### Added
