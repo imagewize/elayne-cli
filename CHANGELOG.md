@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.9.0] - 2026-05-08
+
+### Deprecated
+
+- This package is now deprecated. All commands (`pattern:create`, `layout:create`, `style:create`, `pattern:list`) have been absorbed into [`imagewize/pt-cli`](https://github.com/imagewize/pt-cli) v2.0.0.
+- Migrate: `composer global remove imagewize/elayne-cli && composer global require imagewize/pt-cli`
+- This is the final release. The repository is archived.
+
+---
+
 ## [1.8.1] - 2026-05-06
 
 ### Added

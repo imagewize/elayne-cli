@@ -1,6 +1,7 @@
 {
     "name": "imagewize/elayne-cli",
     "description": "CLI scaffolding tool for Elayne WordPress block theme patterns",
+    "abandoned": "imagewize/pt-cli",
     "type": "library",
     "license": "GPL-2.0-or-later",
     "authors": [

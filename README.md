@@ -1,5 +1,14 @@
 # Elayne CLI
 
+> **Deprecated** — This package is no longer maintained. All functionality has been absorbed into [`imagewize/pt-cli`](https://github.com/imagewize/pt-cli) v2.0.0.
+>
+> ```bash
+> composer global remove imagewize/elayne-cli
+> composer global require imagewize/pt-cli
+> ```
+>
+> Commands are identical — `pattern:create`, `layout:create`, `style:create`, `pattern:list` — now alongside `pt-cli check`.
+
 CLI scaffolding tool for [Elayne](https://github.com/imagewize/elayne), a WordPress block theme. Generates WordPress block pattern PHP files, layout patterns, and theme style variation JSON files interactively from pre-built templates.
 
 ## Requirements
